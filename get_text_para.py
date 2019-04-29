@@ -31,6 +31,8 @@ def get_content(kwargs):
 				text.append(str(paragraph))
 	text = list(set(text))
 	print(url)
+	if len(text) == 0:
+		print("Got nothing from {}".format(url))
 	return text
 
 
@@ -102,7 +104,12 @@ def main():
 		for u in urls_batch:
 			f_finished.writelines(u)
 			f_finished.write("\n")
-			f_finished.flush()	
+			f_finished.flush()
+
+		if len(unextracted_urls) <= args.batch_size:
+			unextracted_urls = []
+		else:
+			unextracted_urls = unextracted_urls[args.batch_size:]	
 	
 	pool.close()
 	pool.join()
