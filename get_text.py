@@ -9,7 +9,7 @@ from selenium.common.exceptions import TimeoutException
 
 
 THRESHOULD=0.7
-MIN_LENGTH=100
+MIN_LENGTH=20
 
 def get_content(url, threshould, min_length, driver=None):
     if driver is not None:

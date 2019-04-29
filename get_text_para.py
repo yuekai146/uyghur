@@ -114,6 +114,14 @@ def main():
 	pool.close()
 	pool.join()
 
+	f.close()
+	f_finished.close()
+	f = open("./texts.txt", 'r')
+	lines = f.readlines()
+	lines = list(set([l.strip() for l in lines]))
+	f.close()
+	f = open("./filtered_texts.txt", 'w')
+	f.write("\n".join(lines) + '\n')
 
 if __name__ == '__main__':
 	main()
